@@ -6,10 +6,13 @@
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 2rem;
     justify-content: center;
+    max-width: 1200px; /* Adjust this value as needed to fit your layout */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .portfolio-item {
@@ -149,8 +152,14 @@
 }
 
 /* Responsive design */
+@media screen and (max-width: 1200px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (max-width: 768px) {
     .portfolio-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: 1fr;
     }
 }

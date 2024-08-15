@@ -2,24 +2,81 @@ document.addEventListener('DOMContentLoaded', () => {
     const portfolioData = [
         {
             id: 1,
-            title: "Ethereal Echoes",
-            artist: "Luna Cascade",
+            title: "What Was the Question?",
+            artist: "Curtisy",
             image: "images/placeholder_artwork_1.jpg",
-            audio: "audio/sample1.mp3",
             tracklist: ["Moonlit Serenade", "Whispers in the Mist", "Starlight Sonata"],
             credits: "Mixed and Mastered by Killian Taylor",
             bio: "Luna Cascade is an ambient electronic artist known for creating ethereal soundscapes that transport listeners to otherworldly realms.",
+            audio: "audio/03 Glue Master.wav",
             fullTracklist: [
-                { title: "Moonlit Serenade", duration: "4:32" },
-                { title: "Whispers in the Mist", duration: "5:17" },
-                { title: "Starlight Sonata", duration: "6:03" },
-                { title: "Cosmic Lullaby", duration: "4:55" },
-                { title: "Nebula Dreams", duration: "5:41" }
+                { title: "Gangnam Style", duration: "3:39" },
+
             ],
-            expandedCredits: "Produced by Luna Cascade\nMixed and Mastered by Killian Taylor\nAdditional synthesizers by Alex Starlight\nArtwork by Celeste Designs"
+            expandedCredits: "Mixed and Mastered by Killian Taylor\nBrook Records"
         },
         {
             id: 2,
+            title: "Gangnam Style",
+            artist: "PSY",
+            image: "images/placeholder_artwork_2.jpg",
+            audio: "audio/sample2.mp3",
+            tracklist: ["Gangnam Style", "Right Now"],
+            credits: "Mixed and Mastered by Killian Taylor",
+            bio: "PSY is a South Korean singer, rapper, songwriter, and record producer known for his humorous videos and stage performances.",
+            fullTracklist: [
+                { title: "Gangnam Style", duration: "3:39" },
+                { title: "Right Now", duration: "3:33" }
+            ],
+            expandedCredits: "Produced by PSY and Yoo Gun Hyung\nMixed and Mastered by Killian Taylor\nChoreography by Ga In"
+        },
+        {
+            id: 3,
+            title: "Losing It",
+            artist: "Curtisy",
+            image: "images/Losing It_album_cover.jpg",
+            audio: "audio/sample2.mp3",
+            tracklist: ["Single", "Right Now"],
+            credits: "Engineered, Mixed and Mastered by Killian Taylor",
+            bio: "Cant be losing it all!",
+            fullTracklist: [
+                { title: "Gangnam Style", duration: "3:39" },
+                { title: "Right Now", duration: "3:33" }
+            ],
+            expandedCredits: "Produced by PSY and Yoo Gun Hyung\nMixed and Mastered by Killian Taylor\nChoreography by Ga In"
+        },
+        {
+            id: 4,
+            title: "Weed Addict",
+            artist: "Peer Pleasure",
+            image: "images/Weed Addict_album_cover.jpg",
+            audio: "audio/sample2.mp3",
+            tracklist: ["Gangnam Style", "Right Now"],
+            credits: "Mixed and Mastered by Killian Taylor",
+            bio: "PSY is a South Korean singer, rapper, songwriter, and record producer known for his humorous videos and stage performances.",
+            fullTracklist: [
+                { title: "Gangnam Style", duration: "3:39" },
+                { title: "Right Now", duration: "3:33" }
+            ],
+            expandedCredits: "Produced by PSY and Yoo Gun Hyung\nMixed and Mastered by Killian Taylor\nChoreography by Ga In"
+        },
+        {
+            id: 5,
+            title: "Shiny Things",
+            artist: "Evie",
+            image: "images/Shiny Things_album_cover.jpg",
+            audio: "audio/sample2.mp3",
+            tracklist: ["Gangnam Style", "Right Now"],
+            credits: "Mixed and Mastered by Killian Taylor",
+            bio: "PSY is a South Korean singer, rapper, songwriter, and record producer known for his humorous videos and stage performances.",
+            fullTracklist: [
+                { title: "Gangnam Style", duration: "3:39" },
+                { title: "Right Now", duration: "3:33" }
+            ],
+            expandedCredits: "Produced by PSY and Yoo Gun Hyung\nMixed and Mastered by Killian Taylor\nChoreography by Ga In"
+        },
+        {
+            id: 6,
             title: "Gangnam Style",
             artist: "PSY",
             image: "images/placeholder_artwork_2.jpg",
