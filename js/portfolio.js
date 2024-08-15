@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 2,
-            title: "Gangnam style",
+            title: "Gangnam Style",
             artist: "PSY",
             image: "images/placeholder_artwork_2.jpg",
             audio: "audio/sample2.mp3",
@@ -53,26 +53,51 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="info-bar">
                 <h3>${item.title}</h3>
                 <p>Artist: ${item.artist}</p>
-                <p>Tracklist:</p>
-                <ul class="tracklist">
-                    ${item.tracklist.map(track => `<li>${track}</li>`).join('')}
-                </ul>
-                <p>${item.credits}</p>
                 <button class="more-info-btn" aria-expanded="false">More Info</button>
+            </div>
+            <div class="expanded-content">
+                <button class="close-btn" aria-label="Close expanded view">&times;</button>
+                <h2>${item.title}</h2>
+                <h3>${item.artist}</h3>
+                <p>${item.bio}</p>
+                <h4>Full Tracklist:</h4>
+                <ul>
+                    ${item.fullTracklist.map(track => `<li>${track.title} - ${track.duration}</li>`).join('')}
+                </ul>
+                <h4>Credits:</h4>
+                <pre>${item.expandedCredits}</pre>
+                <h4>Listen to Tracks:</h4>
+                ${item.fullTracklist.map(track => `
+                    <div>
+                        <p>${track.title}</p>
+                        <audio controls>
+                            <source src="${item.audio}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                `).join('')}
             </div>
         `;
 
         const moreInfoBtn = portfolioItem.querySelector('.more-info-btn');
+        const closeBtn = portfolioItem.querySelector('.close-btn');
 
         portfolioItem.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('more-info-btn') && !portfolioItem.classList.contains('expanded')) {
+            if (!e.target.classList.contains('more-info-btn') &&
+                !e.target.classList.contains('close-btn') &&
+                !portfolioItem.classList.contains('expanded')) {
                 toggleInfoBar(portfolioItem);
             }
         });
 
         moreInfoBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleExpand(portfolioItem, item);
+            toggleExpand(portfolioItem);
+        });
+
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleExpand(portfolioItem);
         });
 
         return portfolioItem;
@@ -82,88 +107,40 @@ document.addEventListener('DOMContentLoaded', () => {
         portfolioItem.classList.toggle('active');
     }
 
-    function toggleExpand(portfolioItem, item) {
+    function toggleExpand(portfolioItem) {
         const isExpanded = portfolioItem.classList.contains('expanded');
-        const expandedContent = portfolioGrid.querySelector('.expanded-content');
+        const moreInfoBtn = portfolioItem.querySelector('.more-info-btn');
 
-        // Close any other expanded items
-        document.querySelectorAll('.portfolio-item.expanded').forEach(expandedItem => {
-            if (expandedItem !== portfolioItem) {
-                collapseItem(expandedItem);
+        // Close other expanded items
+        document.querySelectorAll('.portfolio-item.expanded').forEach(item => {
+            if (item !== portfolioItem) {
+                item.classList.remove('expanded');
+                item.querySelector('.more-info-btn').setAttribute('aria-expanded', 'false');
             }
         });
 
         if (!isExpanded) {
-            expandItem(portfolioItem, item);
-        } else {
-            collapseItem(portfolioItem);
-        }
-    }
+            portfolioItem.classList.add('expanded');
+            moreInfoBtn.setAttribute('aria-expanded', 'true');
 
-    function expandItem(portfolioItem, item) {
-        portfolioItem.classList.add('expanded');
-        const expandedContent = document.createElement('div');
-        expandedContent.classList.add('expanded-content');
-        expandedContent.innerHTML = createExpandedContent(item);
-
-        // Find the correct position to insert the expanded content
-        const itemIndex = Array.from(portfolioGrid.children).indexOf(portfolioItem);
-        const itemsPerRow = Math.floor(portfolioGrid.offsetWidth / portfolioItem.offsetWidth);
-        const insertIndex = Math.ceil((itemIndex + 1) / itemsPerRow) * itemsPerRow;
-
-        if (portfolioGrid.children[insertIndex]) {
-            portfolioGrid.insertBefore(expandedContent, portfolioGrid.children[insertIndex]);
-        } else {
-            portfolioGrid.appendChild(expandedContent);
-        }
-
-        const closeBtn = expandedContent.querySelector('.close-btn');
-        closeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            collapseItem(portfolioItem);
-        });
-
-        // Trigger reflow to ensure the transition applies
-        expandedContent.offsetHeight;
-        expandedContent.style.opacity = '1';
-        expandedContent.style.transform = 'translateY(0)';
-    }
-
-    function collapseItem(portfolioItem) {
-        portfolioItem.classList.remove('expanded');
-        const expandedContent = portfolioGrid.querySelector('.expanded-content');
-        if (expandedContent) {
-            expandedContent.style.opacity = '0';
-            expandedContent.style.transform = 'translateY(-20px)';
+            // Scroll the expanded item into view if it's not fully visible
             setTimeout(() => {
-                expandedContent.remove();
-            }, 500); // Match this timing with the CSS transition duration
-        }
-    }
+                const rect = portfolioItem.getBoundingClientRect();
+                const isFullyVisible = (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
 
-    function createExpandedContent(item) {
-        return `
-            <button class="close-btn" aria-label="Close expanded view">Close</button>
-            <h2>${item.title}</h2>
-            <h3>${item.artist}</h3>
-            <p>${item.bio}</p>
-            <h4>Full Tracklist:</h4>
-            <ul>
-                ${item.fullTracklist.map(track => `<li>${track.title} - ${track.duration}</li>`).join('')}
-            </ul>
-            <h4>Credits:</h4>
-            <pre>${item.expandedCredits}</pre>
-            <h4>Listen to Tracks:</h4>
-            ${item.fullTracklist.map(track => `
-                <div>
-                    <p>${track.title}</p>
-                    <audio controls>
-                        <source src="${item.audio}" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
-            `).join('')}
-        `;
+                if (!isFullyVisible) {
+                    portfolioItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }, 300); // Wait for the expansion animation to complete
+        } else {
+            portfolioItem.classList.remove('expanded');
+            moreInfoBtn.setAttribute('aria-expanded', 'false');
+        }
     }
 
     // ScrollReveal animations
@@ -172,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         distance: '50px',
         duration: 1000,
         delay: 200,
-        easing: 'ease-in-out'
+        easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)'
     });
 
     ScrollReveal().reveal('.portfolio-item', {
@@ -180,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         distance: '50px',
         duration: 1000,
         delay: 200,
-        easing: 'ease-in-out',
+        easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)',
         interval: 200
     });
 });
