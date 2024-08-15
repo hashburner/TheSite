@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Sound Engineer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <img src="images/placeholder_logo.png" alt="John Doe Sound Engineer Logo" class="logo">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="bookings.html">Bookings & Pricing</a></li>
+                    <li><a href="about-faq.html">About & FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="portfolio" class="parallax" data-speed="0.5">
+            <div class="artistic-bg"></div>
+            <div class="container">
+                <h1 class="animate-top">My Portfolio</h1>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item animate-left">
+                        <div class="img-container">
+                            <img src="images/placeholder_artwork_1.jpg" alt="Project 1 Artwork">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>What Was the Question?</h3>
+                            <p>Curtisy</p>
+                            <p>Mixed, Mastered</p>
+                            <div class="audio-player">
+                                <audio src="audio/03 Glue Master.wav"></audio>
+                                <button class="play-pause">Play</button>
+                                <input type="range" class="seek-bar" value="0">
+                                <span class="current-time">0:00</span>
+                                <span class="duration">0:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item animate-right">
+                        <div class="img-container">
+                            <img src="images/placeholder_artwork_2.jpg" alt="Project 2 Artwork">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Project 2 Title</h3>
+                            <p>Artist Name</p>
+                            <div class="audio-player">
+                                <audio src="audio/placeholder_audio_2.mp3"></audio>
+                                <button class="play-pause">Play</button>
+                                <input type="range" class="seek-bar" value="0">
+                                <span class="current-time">0:00</span>
+                                <span class="duration">0:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more portfolio items as needed -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 John Doe Sound Engineering. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/portfolio.js"></script>
+</body>
+</html>
