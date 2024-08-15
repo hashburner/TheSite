@@ -19,7 +19,7 @@
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
@@ -32,6 +32,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 0.3s ease;
 }
 
 .info-bar {
@@ -72,15 +73,87 @@
     font-size: 0.8rem;
 }
 
+.more-info-btn {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.more-info-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.portfolio-item.expanded {
+    width: calc(200% + 2rem);
+    aspect-ratio: auto;
+    height: auto;
+    grid-column: span 2;
+    z-index: 10;
+}
+
+.portfolio-item.expanded img {
+    width: 37.5%;  /* 25% increase from original 30% */
+    height: auto;
+    float: left;
+    margin-right: 1rem;
+}
+
+.expanded-content {
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.expanded-content h2 {
+    margin-top: 0;
+}
+
+.expanded-content .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.expanded-content .close-btn:hover {
+    background-color: var(--primary-color);
+}
+
 /* Responsive design for portfolio */
 @media screen and (max-width: 1024px) {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portfolio-item.expanded {
+        width: 100%;
+        grid-column: span 2;
+    }
+
+    .portfolio-item.expanded img {
+        width: 100%;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 1rem;
     }
 }
 
 @media screen and (max-width: 768px) {
     .portfolio-grid {
         grid-template-columns: 1fr;
+    }
+
+    .portfolio-item.expanded {
+        width: 100%;
+        grid-column: span 1;
     }
 }
