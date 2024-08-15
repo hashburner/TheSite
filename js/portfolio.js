@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 1,
             title: "Ethereal Echoes",
             artist: "Luna Cascade",
-            image: "../images/placeholder_artwork_1.jpg",
+            image: "images/placeholder_artwork_1.jpg",
+            audio: "audio/sample1.mp3",
             tracklist: ["Moonlit Serenade", "Whispers in the Mist", "Starlight Sonata"],
             credits: "Mixed and Mastered by Killian Taylor"
         },
@@ -12,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 2,
             title: "Urban Rhythms",
             artist: "The City Collective",
-            image: "/api/placeholder/400/400?text=Urban+Rhythms",
+            image: "images/placeholder_artwork_1.jpg",
+            audio: "audio/sample2.mp3",
             tracklist: ["Neon Nights", "Concrete Jungle", "Subway Dreams", "Skyscraper Blues"],
             credits: "Produced, Mixed, and Mastered by Killian Taylor"
         },
@@ -20,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 3,
             title: "Acoustic Journeys",
             artist: "Wooden Hearts",
-            image: "/api/placeholder/400/400?text=Acoustic+Journeys",
+            image: "images/placeholder_artwork_1.jpg",
+            audio: "audio/sample3.mp3",
             tracklist: ["Forest Whispers", "Mountain Melodies", "River's Song"],
             credits: "Recorded and Mixed by Killian Taylor"
         },
@@ -28,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 4,
             title: "Electric Dreams",
             artist: "Synth Waves",
-            image: "/api/placeholder/400/400?text=Electric+Dreams",
+            image: "images/placeholder_artwork_1.jpg",
+            audio: "audio/sample4.mp3",
             tracklist: ["Retro Future", "Digital Love", "Neon Horizons", "Binary Beats"],
             credits: "Mixed and Mastered by Killian Taylor"
         },
@@ -36,7 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 5,
             title: "Jazz Nocturne",
             artist: "The Midnight Quartet",
-            image: "/api/placeholder/400/400?text=Jazz+Nocturne",
+            image: "images/placeholder_artwork_1.jpg",
+            audio: "audio/sample5.mp3",
             tracklist: ["Blue Moon Bossa", "Saxophone Lullaby", "Nightclub Noir"],
             credits: "Recorded, Mixed, and Mastered by Killian Taylor"
         },
@@ -44,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 6,
             title: "Folk Tales",
             artist: "Storyteller's Guild",
-            image: "/api/placeholder/400/400?text=Folk+Tales",
+            image: "images/placeholder_artwork_1.jpg",
+            audio: "audio/sample6.mp3",
             tracklist: ["Wanderer's Ballad", "Harvest Home", "Legends of the Green", "Fireside Songs"],
             credits: "Produced and Mixed by Killian Taylor"
         }
@@ -66,6 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${item.tracklist.map(track => `<li>${track}</li>`).join('')}
                 </ul>
                 <p>${item.credits}</p>
+                <audio controls>
+                    <source src="${item.audio}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
         `;
         portfolioGrid.appendChild(portfolioItem);
