@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Killian Taylor Sound Engineering - Bookings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/bookings.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <img src="images/placeholder_logo.png" alt="Killian Taylor Logo" class="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="bookings.html" class="active">Bookings</a></li>
+                <li><a href="about-faq.html">About & FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="bookings" class="section parallax" data-speed="0.5">
+            <div class="container">
+                <h1 class="animate-top">Bookings</h1>
+                <div class="booking-container">
+                    <div class="about-booking animate-left">
+                        <h2>How to Book</h2>
+                        <p>Booking a session with Killian Taylor Sound Engineering is easy and straightforward. Here's what you need to know:</p>
+                        <ul>
+                            <li>Fill out the booking request form with your details and preferred date.</li>
+                            <li>Choose the service you're interested in from our available options.</li>
+                            <li>Provide any additional information that might be relevant to your project.</li>
+                            <li>Once submitted, we'll review your request and get back to you within 24-48 hours.</li>
+                            <li>If your preferred date is unavailable, we'll work with you to find a suitable alternative.</li>
+                        </ul>
+                        <p>For any questions or special requests, don't hesitate to reach out directly via email or phone.</p>
+                    </div>
+                    <div class="booking-form-container animate-right">
+                        <h2>Request a Booking</h2>
+                        <form id="booking-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Select a service</option>
+                                    <option value="mixing">Mixing</option>
+                                    <option value="mastering">Mastering</option>
+                                    <option value="recording">Recording</option>
+                                    <option value="production">Production</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="details">Additional Details</label>
+                                <textarea id="details" name="details" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Killian Taylor Sound Engineering. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/bookings.js"></script>
+</body>
+</html>

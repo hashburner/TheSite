@@ -1,0 +1,171 @@
+/* Bookings specific styles */
+#bookings {
+    background-color: var(--background-color);
+    padding: 6rem 0;
+}
+
+.booking-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.about-booking,
+.booking-form-container {
+    background-color: var(--backgroundalt-color);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-booking {
+    flex: 1;
+    max-width: 500px;
+}
+
+.about-booking h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.about-booking p,
+.about-booking ul {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.about-booking ul {
+    padding-left: 1.5rem;
+}
+
+.about-booking li {
+    margin-bottom: 0.5rem;
+}
+
+.booking-form-container {
+    flex: 1;
+    max-width: 500px;
+}
+
+.booking-form-container:hover,
+.about-booking:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Booking form styles */
+#booking-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+#booking-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+#booking-form input,
+#booking-form select,
+#booking-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+#booking-form input:focus,
+#booking-form select:focus,
+#booking-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 102, 102, 0.2);
+}
+
+#booking-form select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%234c3935" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    padding-right: 30px;
+}
+
+#booking-form input[type="date"] {
+    font-size: 1.1rem;
+    padding: 0.9rem 0.75rem;
+    cursor: pointer;
+}
+
+#booking-form input[type="date"]:hover {
+    background-color: var(--backgroundalt-color);
+}
+
+#booking-form button {
+    align-self: flex-start;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#booking-form button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Responsive design */
+@media screen and (max-width: 1024px) {
+    .booking-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-booking,
+    .booking-form-container {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .booking-form-container,
+    .about-booking {
+        padding: 1.5rem;
+    }
+
+    #booking-form button {
+        width: 100%;
+    }
+}
