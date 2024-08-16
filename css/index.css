@@ -26,18 +26,31 @@
 #showcase {
     background-color: var(--background-color);
     padding: 5% 0;
+    overflow: hidden;
 }
 
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.project-scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.project-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.project-list {
+    display: flex;
     gap: 2rem;
-    margin-top: 2rem;
+    padding: 2rem 0;
+    width: max-content;
 }
 
 .project {
-    display: flex;
-    background-color: #ffffff;
+    flex: 0 0 300px;
+    background-color: var(--backgroundalt-color);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -50,12 +63,16 @@
 }
 
 .project .img-container {
-    width: 300px;
-    height: 300px;
-    flex-shrink: 0;
+    width: 100%;
+    padding-top: 100%; /* This creates a 1:1 aspect ratio */
+    position: relative;
+    overflow: hidden;
 }
 
 .project .img-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -63,35 +80,34 @@
 
 .project-content {
     padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .project h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    color: var(--text-color);
 }
 
 .project p {
     font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
 }
 
 .spotify-link {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background-color: #1DB954;
-    color: #ffffff;
+    background-color: var(--accent-color);
+    color: var(--background-color);
     text-decoration: none;
     border-radius: 20px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    align-self: flex-start;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
 }
 
 .spotify-link:hover {
-    background-color: #1ed760;
+    background-color: var(--primary-color);
     transform: translateY(-2px);
 }
 
@@ -138,12 +154,17 @@
     }
 
     .project {
-        flex-direction: column;
+        flex: 0 0 250px;
     }
 
-    .project .img-container {
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
         width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
+        max-width: 250px;
+        text-align: center;
     }
 }

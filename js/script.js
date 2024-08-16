@@ -122,4 +122,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial call to set correct state on page load
     updateAnimations();
+
+    // Smooth scrolling for project list
+    const projectList = document.querySelector('.project-list');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    projectList.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - projectList.offsetLeft;
+        scrollLeft = projectList.scrollLeft;
+    });
+
+    projectList.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+
+    projectList.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+
+    projectList.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - projectList.offsetLeft;
+        const walk = (x - startX) * 2;
+        projectList.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch events for mobile devices
+    projectList.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - projectList.offsetLeft;
+        scrollLeft = projectList.scrollLeft;
+    });
+
+    projectList.addEventListener('touchend', () => {
+        isDown = false;
+    });
+
+    projectList.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.touches[0].pageX - projectList.offsetLeft;
+        const walk = (x - startX) * 2;
+        projectList.scrollLeft = scrollLeft - walk;
+    });
 });

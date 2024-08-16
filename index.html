@@ -3,72 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Killian Taylor Audio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Killian Taylor Sound Engineering</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/index.css">
-    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 </head>
 <body>
     <header>
         <div class="container">
             <nav>
-                <img src="images/placeholder_logo.png" alt="John Doe Sound Engineer Logo" class="logo">
+                <img src="images/placeholder_logo.png" alt="Killian Taylor Sound Engineer Logo" class="logo">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="services.html">Services</a></li>
-                    <li><a href="bookings.html">Bookings & Pricing</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
                     <li><a href="about-faq.html">About & FAQ</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section id="home" class="parallax" data-speed="0.5">
+    <main role="main">
+        <section id="home" class="section parallax" data-speed="0.5">
             <div class="artistic-bg"></div>
             <div class="container">
-                <h1 class="animate-left">Killian Taylor</h1>
-                <h2 class="animate-right">Professional Sound Engineer</h2>
+                <h1 id="home-title" class="animate-left">Killian Taylor</h1>
+                <h2 id="home-subtitle" class="animate-right">Professional Sound Engineer</h2>
             </div>
         </section>
 
-        <section id="showcase">
+        <section id="showcase" class="section">
             <div class="container">
                 <h2 class="animate-top">Latest Projects</h2>
-                <div class="project-grid">
-                    <div class="project animate-bottom">
-                        <div class="img-container">
-                            <img src="images/placeholder_artwork_1.jpg" alt="Project Artwork">
+                <div class="project-scroll-container">
+                    <div class="project-list">
+                        <div class="project animate-bottom">
+                            <div class="img-container">
+                                <img src="images/placeholder_artwork_1.jpg" alt="What Was the Question? by Curtisy">
+                            </div>
+                            <div class="project-content">
+                                <h3>What Was the Question?</h3>
+                                <p>Artist: Curtisy</p>
+                                <p>Mixed, Mastered</p>
+                                <a href="https://open.spotify.com/album/2fKkKKLxeXHlKknCUckPJN?si=2PLDvfqQQ42HQ3pZY5Nj8g" class="spotify-link">Listen on Spotify</a>
+                            </div>
                         </div>
-                        <div class="project-content">
-                            <h3>What Was the Question?</h3>
-                            <p>Curtisy</p>
-                            <p>Mixed, Mastered</p>
-                            <a href="https://open.spotify.com/album/2fKkKKLxeXHlKknCUckPJN?si=2PLDvfqQQ42HQ3pZY5Nj8g" class="spotify-link">Listen on Spotify</a>
+                        <div class="project animate-bottom">
+                            <div class="img-container">
+                                <img src="images/placeholder_artwork_2.jpg" alt="Four Winds Echo On The Stave by Leon McMahon">
+                            </div>
+                            <div class="project-content">
+                                <h3>Four Winds Echo On The Stave</h3>
+                                <p>Artist: Leon McMahon</p>
+                                <p>Produced, Mixed, Mastered</p>
+                                <a href="#" class="spotify-link">Listen on Spotify</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project animate-bottom">
-                        <div class="img-container">
-                            <img src="images/placeholder_artwork_2.jpg" alt="Project Artwork">
+                        <div class="project animate-bottom">
+                            <div class="img-container">
+                                <img src="images/placeholder_artwork_3.jpg" alt="Echoes of Silence by The Midnight Dreamers">
+                            </div>
+                            <div class="project-content">
+                                <h3>Echoes of Silence</h3>
+                                <p>Artist: The Midnight Dreamers</p>
+                                <p>Mixed, Mastered</p>
+                                <a href="#" class="spotify-link">Listen on Spotify</a>
+                            </div>
                         </div>
-                        <div class="project-content">
-                            <h3>Four Winds Echo On The Stave</h3>
-                            <p>Leon McMahon</p>
-                            <p>Produced, Mixed, Mastered</p>
-                            <a href="#" class="spotify-link">Listen on Spotify</a>
+                        <div class="project animate-bottom">
+                            <div class="img-container">
+                                <img src="images/placeholder_artwork_4.jpg" alt="Neon Horizons by Synth Voyager">
+                            </div>
+                            <div class="project-content">
+                                <h3>Neon Horizons</h3>
+                                <p>Artist: Synth Voyager</p>
+                                <p>Produced, Mixed</p>
+                                <a href="#" class="spotify-link">Listen on Spotify</a>
+                            </div>
+                        </div>
+                        <div class="project animate-bottom">
+                            <div class="img-container">
+                                <img src="images/placeholder_artwork_5.jpg" alt="Acoustic Dreams by Sarah Strings">
+                            </div>
+                            <div class="project-content">
+                                <h3>Acoustic Dreams</h3>
+                                <p>Artist: Sarah Strings</p>
+                                <p>Recorded, Mixed, Mastered</p>
+                                <a href="#" class="spotify-link">Listen on Spotify</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="bio">
+        <section id="bio" class="section">
             <div class="artistic-bg"></div>
             <div class="container">
                 <h2 class="animate-left">About Me</h2>
-                <p class="animate-right">Hello, I'm Killian, an Audio Engineer with over 5 years of experience based in Dublin. I've worked on a variety of Irish music projects, specializing in mixing, mastering, production, and live sound.</p>
+                <p class="animate-right">
+                    Hello, I'm Killian, an Audio Engineer with over 5 years of experience based in Dublin. I've worked on a variety of Irish music projects, specializing in mixing, mastering, production, and live sound.
+                </p>
                 <div class="cta-buttons animate-bottom">
                     <a href="about-faq.html#faq" class="btn">Read FAQ</a>
                     <a href="bookings.html" class="btn">Book Now</a>
