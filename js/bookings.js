@@ -1,99 +1,63 @@
-/* Bookings, Contact, and Pricing specific styles */
-#bookings, #pricing {
-    background-color: #f5f5f5;
-    padding: 6rem 0;
-}
+document.addEventListener('DOMContentLoaded', () => {
+    // Animate elements on scroll
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.animate-fade-in, .animate-top, .animate-left, .animate-right, .animate-bottom');
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            if (elementTop < window.innerHeight && elementBottom > 0) {
+                element.style.visibility = 'visible';
+                element.classList.add('animated');
+            }
+        });
+    };
 
-.booking-grid, .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Initial check on page load
 
-.calendar-container, .booking-form-container, .pricing-item {
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    // Parallax effect for background
+    const parallaxSections = document.querySelectorAll('.parallax');
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        parallaxSections.forEach(section => {
+            const speed = section.dataset.speed;
+            const yPos = -(scrolled * speed);
+            section.style.backgroundPositionY = yPos + 'px';
+        });
+    });
 
-/* Calendar styles */
-#availability-calendar {
-    width: 100%;
-    height: 300px;
-}
+    // Form submission handling
+    const form = document.getElementById('booking-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            if (response.ok) {
+                alert('Booking request sent successfully!');
+                form.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            alert('There was an error sending your booking request. Please try again later.');
+            console.error(error);
+        }
+    });
 
-/* Booking form styles */
-#booking-form {
-    display: flex;
-    flex-direction: column;
-}
-
-#booking-form label {
-    margin-top: 1rem;
-}
-
-#booking-form input,
-#booking-form select,
-#booking-form textarea {
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.25rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#booking-form button {
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #ff5e5e;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#booking-form button:hover {
-    background-color: #ff7a7a;
-}
-
-/* Pricing styles */
-.pricing-item {
-    text-align: center;
-}
-
-.pricing-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.price {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #ff5e5e;
-    margin-bottom: 1rem;
-}
-
-.pricing-item ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.pricing-item li {
-    margin-bottom: 0.5rem;
-}
-
-.pricing-note {
-    text-align: center;
-    margin-top: 2rem;
-    font-style: italic;
-}
-
-/* Responsive design */
-@media screen and (max-width: 768px) {
-    .booking-grid, .pricing-grid {
-        grid-template-columns: 1fr;
-    }
-}
+    // Add smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});

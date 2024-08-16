@@ -3,104 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - Bookings, Contact, and Pricing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Killian Taylor Sound Engineering - Bookings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/bookings.css">
-    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-        <nav>
-            <img src="images/placeholder_logo.png" alt="John Doe Sound Engineer Logo" class="logo">
+    <header>
+        <nav class="container">
+            <img src="images/placeholder_logo.png" alt="Killian Taylor Logo" class="logo">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="bookings.html">Bookings & Pricing</a></li>
+                <li><a href="bookings.html" class="active">Bookings</a></li>
                 <li><a href="about-faq.html">About & FAQ</a></li>
             </ul>
         </nav>
-    </div>
-</header>
+    </header>
 
     <main>
-        <section id="bookings" class="parallax" data-speed="0.5">
+        <section id="bookings" class="section parallax" data-speed="0.5">
             <div class="container">
-                <h1 class="animate-top">Bookings and Contact</h1>
-
-                <div class="booking-grid">
-                    <div class="calendar-container animate-left">
-                        <h2>Availability</h2>
-                        <div id="availability-calendar"></div>
+                <h1 class="animate-top">Bookings</h1>
+                <div class="booking-container">
+                    <div class="about-booking animate-left">
+                        <h2>How to Book</h2>
+                        <p>Booking a session with Killian Taylor Sound Engineering is easy and straightforward. Here's what you need to know:</p>
+                        <ul>
+                            <li>Fill out the booking request form with your details and preferred date.</li>
+                            <li>Choose the service you're interested in from our available options.</li>
+                            <li>Provide any additional information that might be relevant to your project.</li>
+                            <li>Once submitted, we'll review your request and get back to you within 24-48 hours.</li>
+                            <li>If your preferred date is unavailable, we'll work with you to find a suitable alternative.</li>
+                        </ul>
+                        <p>For any questions or special requests, don't hesitate to reach out directly via email or phone.</p>
                     </div>
-
                     <div class="booking-form-container animate-right">
                         <h2>Request a Booking</h2>
-                        <form id="booking-form" action="https://formspree.io/f/your-formspree-endpoint" method="POST">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" required>
-
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
-
-                            <label for="service">Service:</label>
-                            <select id="service" name="service" required>
-                                <option value="">Select a service</option>
-                                <option value="mixing">Mixing</option>
-                                <option value="mastering">Mastering</option>
-                                <option value="recording">Recording</option>
-                                <option value="production">Production</option>
-                            </select>
-
-                            <label for="date">Preferred Date:</label>
-                            <input type="text" id="date" name="date" required>
-
-                            <label for="message">Additional Details:</label>
-                            <textarea id="message" name="message" rows="4"></textarea>
-
-                            <button type="submit">Send Request</button>
+                        <form id="booking-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Select a service</option>
+                                    <option value="mixing">Mixing</option>
+                                    <option value="mastering">Mastering</option>
+                                    <option value="recording">Recording</option>
+                                    <option value="production">Production</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="details">Additional Details</label>
+                                <textarea id="details" name="details" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Request</button>
                         </form>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="pricing" class="parallax" data-speed="0.5">
-            <div class="container">
-                <h2 class="animate-top">Pricing Guidelines</h2>
-                <div class="pricing-grid">
-                    <div class="pricing-item animate-left">
-                        <h3>Mixing</h3>
-                        <p class="price">Starting at $300 per track</p>
-                        <ul>
-                            <li>Professional-grade mixing</li>
-                            <li>Up to 3 revisions</li>
-                            <li>Delivery in high-quality formats</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-item animate-right">
-                        <h3>Mastering</h3>
-                        <p class="price">Starting at $150 per track</p>
-                        <ul>
-                            <li>Industry-standard mastering</li>
-                            <li>Up to 2 revisions</li>
-                            <li>Multiple format delivery</li>
-                        </ul>
-                    </div>
-                    <!-- Add more pricing items as needed -->
-                </div>
-                <p class="pricing-note animate-bottom">Note: Prices may vary based on project complexity. Contact for a custom quote.</p>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 John Doe Sound Engineering. All rights reserved.</p>
+            <p>&copy; 2024 Killian Taylor Sound Engineering. All rights reserved.</p>
         </div>
     </footer>
 
