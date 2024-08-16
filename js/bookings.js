@@ -1,85 +1,99 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Flatpickr for the availability calendar
-    flatpickr("#availability-calendar", {
-        inline: true,
-        mode: "multiple",
-        dateFormat: "Y-m-d",
-        disable: [
-            // Add dates that are not available here
-            // Format: "YYYY-MM-DD"
-            "2024-08-15",
-            "2024-08-16",
-            "2024-08-17"
-        ]
-    });
+/* Bookings, Contact, and Pricing specific styles */
+#bookings, #pricing {
+    background-color: #f5f5f5;
+    padding: 6rem 0;
+}
 
-    // Initialize Flatpickr for the date input in the booking form
-    flatpickr("#date", {
-        minDate: "today",
-        dateFormat: "Y-m-d",
-        disable: [
-            // Add dates that are not available here (same as above)
-            "2024-08-15",
-            "2024-08-16",
-            "2024-08-17"
-        ]
-    });
+.booking-grid, .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
 
-    // ScrollReveal animations
-    ScrollReveal().reveal('.animate-left', {
-        origin: 'left',
-        distance: '50px',
-        duration: 1000,
-        delay: 200,
-        easing: 'ease-in-out'
-    });
+.calendar-container, .booking-form-container, .pricing-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    ScrollReveal().reveal('.animate-right', {
-        origin: 'right',
-        distance: '50px',
-        duration: 1000,
-        delay: 200,
-        easing: 'ease-in-out'
-    });
+/* Calendar styles */
+#availability-calendar {
+    width: 100%;
+    height: 300px;
+}
 
-    ScrollReveal().reveal('.animate-top', {
-        origin: 'top',
-        distance: '50px',
-        duration: 1000,
-        delay: 200,
-        easing: 'ease-in-out'
-    });
+/* Booking form styles */
+#booking-form {
+    display: flex;
+    flex-direction: column;
+}
 
-    ScrollReveal().reveal('.animate-bottom', {
-        origin: 'bottom',
-        distance: '50px',
-        duration: 1000,
-        delay: 200,
-        easing: 'ease-in-out'
-    });
+#booking-form label {
+    margin-top: 1rem;
+}
 
-    // Form submission handling
-    const form = document.getElementById('booking-form');
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-            if (response.ok) {
-                alert('Booking request sent successfully!');
-                form.reset();
-            } else {
-                throw new Error('Form submission failed');
-            }
-        } catch (error) {
-            alert('There was an error sending your booking request. Please try again later.');
-            console.error(error);
-        }
-    });
-});
+#booking-form input,
+#booking-form select,
+#booking-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#booking-form button {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #ff5e5e;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#booking-form button:hover {
+    background-color: #ff7a7a;
+}
+
+/* Pricing styles */
+.pricing-item {
+    text-align: center;
+}
+
+.pricing-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ff5e5e;
+    margin-bottom: 1rem;
+}
+
+.pricing-item ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.pricing-item li {
+    margin-bottom: 0.5rem;
+}
+
+.pricing-note {
+    text-align: center;
+    margin-top: 2rem;
+    font-style: italic;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .booking-grid, .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+}
