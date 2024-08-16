@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Title and subtitle animation
-        const progress = Math.min(scrollPercentage / 30, 1); // Adjust 30 to change how quickly the animation completes
+        const progress = Math.min(scrollPercentage / 15, 1); // Adjust 15 to change how quickly the animation completes
 
         // Animate the title (Killian Taylor)
         const scale = 1 - progress * 0.2; // Scale from 1 to 0.8
-        const opacity = 1 - progress * 0.5; // Opacity from 1 to 0.5
+        const opacity = Math.max(1 - progress * 2, 0); // Opacity from 1 to 0, ensuring it reaches 0
         const blur = progress * 8; // Blur from 0 to 8px
         
         homeTitle.style.transform = `scale(${scale})`;
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Animate the subtitle (Professional Sound Engineer)
         const subtitleDrop = progress * 100; // Drop by 100px at max progress
-        const subtitleOpacity = 1 - progress; // Fade out as it drops
+        const subtitleOpacity = Math.max(1 - progress * 2, 0); // Opacity from 1 to 0, ensuring it reaches 0
         
         homeSubtitle.style.transform = `translateY(${subtitleDrop}px)`;
         homeSubtitle.style.opacity = subtitleOpacity;
