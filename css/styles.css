@@ -5,8 +5,12 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
-    --primary-color: 	#aac5ae;
+    --primary-color: #aac5ae;
     --secondary-color: #72584d;
     --background-color: #faf4c1;
     --backgroundalt-color: #e3ddac;
@@ -165,6 +169,59 @@ footer {
     background-size: cover;
 }
 
+/* Home section styles */
+#home {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    text-align: center;
+    padding: 15% 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#home h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px var(--text-color);
+    transition: all 0.3s ease-out;
+    will-change: transform, opacity, text-shadow;
+}
+
+#home h1.scrolled {
+    opacity: 0.5;
+    transform: scale(0.8);
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+#home h2 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+}
+
+/* Image handling */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-container {
+    overflow: hidden;
+    position: relative;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.img-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* Responsive design */
 @media screen and (max-width: 768px) {
     nav {
@@ -191,25 +248,12 @@ footer {
     h3 {
         font-size: 1.5rem;
     }
-}
 
-/* Image handling */
-img {
-    max-width: 100%;
-    height: auto;
-}
+    #home h1 {
+        font-size: 3rem;
+    }
 
-.img-container {
-    overflow: hidden;
-    position: relative;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
-}
-
-.img-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    #home h2 {
+        font-size: 1.5rem;
+    }
 }
