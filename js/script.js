@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Title and subtitle animation
-        const progress = Math.min(scrollPercentage / 30, 1); // Adjust 30 to change how quickly the animation completes
+        const progress = Math.min(scrollPercentage / 15, 1); // Adjust 15 to change how quickly the animation completes
 
         // Animate the title (Killian Taylor)
         const scale = 1 - progress * 0.2; // Scale from 1 to 0.8
-        const opacity = 1 - progress * 0.5; // Opacity from 1 to 0.5
+        const opacity = Math.max(1 - progress * 2, 0); // Opacity from 1 to 0, ensuring it reaches 0
         const blur = progress * 8; // Blur from 0 to 8px
         
         homeTitle.style.transform = `scale(${scale})`;
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Animate the subtitle (Professional Sound Engineer)
         const subtitleDrop = progress * 100; // Drop by 100px at max progress
-        const subtitleOpacity = 1 - progress; // Fade out as it drops
+        const subtitleOpacity = Math.max(1 - progress * 2, 0); // Opacity from 1 to 0, ensuring it reaches 0
         
         homeSubtitle.style.transform = `translateY(${subtitleDrop}px)`;
         homeSubtitle.style.opacity = subtitleOpacity;
@@ -122,4 +122,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial call to set correct state on page load
     updateAnimations();
+
+    // Smooth scrolling for project list
+    const projectList = document.querySelector('.project-list');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Check if it's a touch device
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
+    if (!isTouchDevice) {
+        projectList.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - projectList.offsetLeft;
+            scrollLeft = projectList.scrollLeft;
+        });
+
+        projectList.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        projectList.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        projectList.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - projectList.offsetLeft;
+            const walk = (x - startX) * 2;
+            projectList.scrollLeft = scrollLeft - walk;
+        });
+    }
+
+    // Remove touch event listeners for mobile devices
+    projectList.removeEventListener('touchstart', () => {});
+    projectList.removeEventListener('touchend', () => {});
+    projectList.removeEventListener('touchmove', () => {});
 });
