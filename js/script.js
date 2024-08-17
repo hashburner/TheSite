@@ -129,44 +129,35 @@ document.addEventListener('DOMContentLoaded', () => {
     let startX;
     let scrollLeft;
 
-    projectList.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - projectList.offsetLeft;
-        scrollLeft = projectList.scrollLeft;
-    });
+    // Check if it's a touch device
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 
-    projectList.addEventListener('mouseleave', () => {
-        isDown = false;
-    });
+    if (!isTouchDevice) {
+        projectList.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - projectList.offsetLeft;
+            scrollLeft = projectList.scrollLeft;
+        });
 
-    projectList.addEventListener('mouseup', () => {
-        isDown = false;
-    });
+        projectList.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
 
-    projectList.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - projectList.offsetLeft;
-        const walk = (x - startX) * 2;
-        projectList.scrollLeft = scrollLeft - walk;
-    });
+        projectList.addEventListener('mouseup', () => {
+            isDown = false;
+        });
 
-    // Touch events for mobile devices
-    projectList.addEventListener('touchstart', (e) => {
-        isDown = true;
-        startX = e.touches[0].pageX - projectList.offsetLeft;
-        scrollLeft = projectList.scrollLeft;
-    });
+        projectList.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - projectList.offsetLeft;
+            const walk = (x - startX) * 2;
+            projectList.scrollLeft = scrollLeft - walk;
+        });
+    }
 
-    projectList.addEventListener('touchend', () => {
-        isDown = false;
-    });
-
-    projectList.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.touches[0].pageX - projectList.offsetLeft;
-        const walk = (x - startX) * 2;
-        projectList.scrollLeft = scrollLeft - walk;
-    });
+    // Remove touch event listeners for mobile devices
+    projectList.removeEventListener('touchstart', () => {});
+    projectList.removeEventListener('touchend', () => {});
+    projectList.removeEventListener('touchmove', () => {});
 });

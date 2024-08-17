@@ -33,12 +33,23 @@
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) var(--backgroundalt-color);
 }
 
+/* Styles for Webkit browsers (Chrome, Safari, etc.) */
 .project-scroll-container::-webkit-scrollbar {
-    display: none;
+    height: 8px;
+}
+
+.project-scroll-container::-webkit-scrollbar-track {
+    background: var(--backgroundalt-color);
+    border-radius: 4px;
+}
+
+.project-scroll-container::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 4px;
 }
 
 .project-list {
@@ -151,6 +162,11 @@
 
     #home h2 {
         font-size: 1.5rem;
+    }
+
+    .project-scroll-container {
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
     }
 
     .project {
