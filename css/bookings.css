@@ -15,9 +15,9 @@
 .about-booking,
 .booking-form-container {
     background-color: var(--backgroundalt-color);
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -48,29 +48,26 @@
 .booking-form-container {
     flex: 1;
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
 }
 
 .booking-form-container:hover,
 .about-booking:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Booking form styles */
 #booking-form {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .form-group {
+    position: relative;
     margin-bottom: 1.5rem;
-}
-
-#booking-form label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: var(--text-color);
 }
 
 #booking-form input,
@@ -79,18 +76,40 @@
     width: 100%;
     padding: 0.75rem;
     border: none;
-    border-radius: 10px;
-    background-color: var(--background-color);
+    border-bottom: 2px solid var(--secondary-color);
+    background-color: transparent;
     color: var(--text-color);
     font-size: 1rem;
-    transition: box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#booking-form label {
+    position: absolute;
+    top: 0.75rem;
+    left: 0;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
 }
 
 #booking-form input:focus,
 #booking-form select:focus,
 #booking-form textarea:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 102, 102, 0.2);
+    border-color: var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+#booking-form input:focus + label,
+#booking-form select:focus + label,
+#booking-form textarea:focus + label,
+#booking-form input:not(:placeholder-shown) + label,
+#booking-form select:not(:placeholder-shown) + label,
+#booking-form textarea:not(:placeholder-shown) + label {
+    top: -0.5rem;
+    font-size: 0.8rem;
+    color: var(--accent-color);
 }
 
 #booking-form select {
@@ -101,24 +120,65 @@
     padding-right: 30px;
 }
 
-#booking-form input[type="date"] {
-    font-size: 1.1rem;
-    padding: 0.9rem 0.75rem;
-    cursor: pointer;
+/* File upload styles */
+.file-upload {
+    margin-bottom: 1.5rem;
 }
 
-#booking-form input[type="date"]:hover {
-    background-color: var(--backgroundalt-color);
+.file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
+    border: 2px dashed var(--secondary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.file-label:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.file-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.file-text {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-name {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+
+/* Form submit section */
+.form-submit {
+    margin-top: 2 rem;
+    padding-top: 1rem;
 }
 
 #booking-form button {
-    align-self: flex-start;
-    margin-top: 1rem;
+    display: block;
+    width: 100%;
     padding: 0.75rem 1.5rem;
     background-color: var(--accent-color);
     color: var(--background-color);
     border: none;
-    border-radius: 10px;
+    border-radius: 4px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
@@ -165,7 +225,15 @@
         padding: 1.5rem;
     }
 
-    #booking-form button {
-        width: 100%;
+    .file-label {
+        height: 100px;
+    }
+
+    .file-icon {
+        font-size: 1.5rem;
+    }
+
+    .file-text {
+        font-size: 0.8rem;
     }
 }
